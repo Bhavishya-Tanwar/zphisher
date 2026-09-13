@@ -424,7 +424,7 @@ capture_ip() {
 	MESSAGE=$(cat <<-EOF
 	Notification:
 	• Victim IP : $IP
-	• Remark: $MESSGAE
+	• Remark: ${MESSGAE}
 	EOF
 	)
 	
