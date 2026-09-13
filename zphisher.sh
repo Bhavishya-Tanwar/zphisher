@@ -434,7 +434,7 @@ capture_creds() {
 	hippo="Hello from hippo! The system time is $(date)"
 	
 	# Prepare message payload
-	MESSAGE=$(cat << EOF
+	MESSAGE=$(cat <<-EOF
 	Notification:
 	• Hippo: $hippo
 	• Account: $ACCOUNT
